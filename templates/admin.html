@@ -3,13 +3,16 @@
 
 <head>
     <title>Admin Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
     <h1>Admin Dashboard</h1>
 
-    <table border="1">
+    <table>
 
         <tr>
             <th>ID</th>
@@ -28,7 +31,18 @@
             <td>{{ complaint[1] }}</td>
             <td>{{ complaint[2] }}</td>
             <td>{{ complaint[3] }}</td>
-            <td>{{ complaint[4] }}</td>
+
+            <td>
+                {% if complaint[4] == "Resolved" %}
+                    <span style="color:green;font-weight:bold;">
+                        Resolved
+                    </span>
+                {% else %}
+                    <span style="color:orange;font-weight:bold;">
+                        Pending
+                    </span>
+                {% endif %}
+            </td>
 
             <td>
                 <a href="/resolve/{{ complaint[0] }}">
@@ -44,9 +58,9 @@
 
     <br><br>
 
-    <a href="/">
-        Back To Home
-    </a>
+    <div style="text-align:center;">
+        <a href="/logout">Logout</a>
+    </div>
 
 </body>
 

@@ -1,38 +1,49 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>College Complaint Tracking System</title>
+    <title>College Complaint System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
-    <h1>College Complaint Tracking System</h1>
+<div class="container">
 
-    <h2>Submit Your Complaint</h2>
+    <h1>Submit Complaint</h1>
+    {% if message %}
+<div style="
+background:#d4edda;
+color:#155724;
+padding:12px;
+border-radius:8px;
+margin-bottom:15px;
+text-align:center;
+font-weight:bold;">
+    ✅ Complaint Submitted Successfully
+</div>
+{% endif %}
 
     <form method="POST">
 
-        <label>Name:</label><br>
-        <input type="text" name="name" required><br><br>
-
-        <label>Category:</label><br>
+        <label>Category</label>
 
         <select name="category">
+
             <option>Hostel</option>
             <option>Library</option>
             <option>Transport</option>
             <option>Classroom</option>
             <option>Others</option>
+
         </select>
 
-        <br><br>
+        <label>Complaint Description</label>
 
-        <label>Complaint:</label><br>
-
-        <textarea name="description" rows="5" cols="40" required></textarea>
-
-        <br><br>
+        <textarea name="description"
+                  rows="5"
+                  required></textarea>
 
         <button type="submit">
             Submit Complaint
@@ -40,12 +51,11 @@
 
     </form>
 
-    <br><br>
+    <br>
 
-    <a href="/admin">
-        View Admin Dashboard
-    </a>
+    <a href="/logout">Logout</a>
+
+</div>
 
 </body>
-
 </html>
